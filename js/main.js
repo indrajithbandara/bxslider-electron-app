@@ -2,11 +2,6 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 
-var menu = require('./menu');
-
-// create desktop menu
-menu.create();
-
 var VIDEO_PATH = path.resolve(__dirname, "files/videos");
 var BANNER_PATH = path.resolve(__dirname, "files/banners");
 var MVP_PATH = path.resolve(__dirname, "files/mvp");
@@ -167,6 +162,12 @@ $(function() {
   });
 });
 
+// create desktop menu
+if (config.menu) {
+  var menu = require('./menu');
+  menu.create();
+}
+
 function loadJSON(path) {
   var json = {};
   try {
@@ -177,4 +178,4 @@ function loadJSON(path) {
   }
 
   return json;
- }
+}
