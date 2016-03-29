@@ -1,0 +1,18 @@
+{
+	"video_num": 1,
+	"banner_num": 2,
+	"banner_duration_sec": 7,
+	"member_duration_sec": 10,
+
+	"members": {
+		"DT0222": {
+			"name": "First Middle Last"
+		},
+		"DT0220": {
+			"name": "First Middle Last2"
+		},
+		"DT0221": {
+			"name": "First Middle Last3"
+		}
+	}
+}

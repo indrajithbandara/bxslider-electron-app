@@ -1,0 +1,24 @@
+{
+  "name": "electron-quick-start",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "authors": [
+    "tuantranf"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "homepage": "https://github.com/tuantranf/electron-quick-start",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
