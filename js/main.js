@@ -2,6 +2,11 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 
+var menu = require('./menu');
+
+// create desktop menu
+menu.create();
+
 var VIDEO_PATH = path.resolve(__dirname, "files/videos");
 var BANNER_PATH = path.resolve(__dirname, "files/banners");
 var MVP_PATH = path.resolve(__dirname, "files/mvp");
@@ -168,7 +173,7 @@ function loadJSON(path) {
     var file = fs.readFileSync(path);
     json = JSON.parse(file);
   } catch (e) {
-    alert("Config file error!", path);
+    alert("Config file error:" + path);
   }
 
   return json;

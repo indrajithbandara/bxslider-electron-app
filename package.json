@@ -4,7 +4,13 @@
   "description": "A minimal Electron slider application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "clean": "rm -rf ./dist",
+    "clean:osx": "rm -rf ./dist/osx",
+    "clean:win": "rm -rf ./dist/win",
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win",
+    "pack:osx": "npm run clean:osx && electron-packager . \"Slider\" --out=dist/osx --platform=darwin --arch=x64 --version=0.37.2 --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=.git --ignore=preview.png",
+    "pack:win": "npm run clean:win && electron-packager . \"Slider\" --out=dist/win --platform=win32 --arch=ia32 --version=0.37.2 --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=.git --ignore=preview.png"
   },
   "repository": {
     "type": "git",
@@ -19,11 +25,11 @@
   "author": "GitHub",
   "license": "MIT",
   "devDependencies": {
-    "electron-prebuilt": "^0.37.2"
+    "electron-prebuilt": "^0.37.2",
+    "electron-packager": "~6.0.0"
   },
   "dependencies": {
     "bower": "~1.6.3",
-    "electron": "^0.37.2",
     "lodash": "~4.6.1"
   }
 }
