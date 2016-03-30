@@ -31,7 +31,7 @@ $(function() {
   _.each(_.sampleSize(banners, config.banner_num), function(val) {
       items.push('<div class="slide-item banner">\
                     <div class="row">\
-                      <img src="' + path.resolve(BANNER_PATH, val) + '" />\
+                      <center><img src="' + path.resolve(BANNER_PATH, val) + '" /></center>\
                     </div>\
                   </div>');
   });
@@ -52,7 +52,7 @@ $(function() {
                   </div>\
                   <div class="row">\
                     <div class="col-md-10">\
-                      <img class="member-banner" src="' + path.resolve(MVP_PATH, latest, val.banner) + '" />\
+                      <center><img class="member-banner" src="' + path.resolve(MVP_PATH, latest, val.banner) + '" /></center>\
                     </div>\
                     <div class="col-md-2">\
                       <h2>CTR: ' + val.CTR + '% </h2>\
@@ -65,7 +65,8 @@ $(function() {
   $("#start").after($(items.join("")));
 
   var MODES = ['horizontal', 'fade'];
-  var EASINGS = ['linear','swing','easeInQuad','easeOutQuad','easeInOutQuad','easeInCubic','easeOutCubic','easeInOutCubic','easeInQuart','easeOutQuart','easeInOutQuart','easeInQuint','easeOutQuint','easeInOutQuint','easeInExpo','easeOutExpo','easeInOutExpo','easeInSine','easeOutSine','easeInOutSine','easeInCirc','easeOutCirc','easeInOutCirc','easeInElastic','easeOutElastic','easeInOutElastic','easeInBack','easeOutBack','easeInOutBack','easeInBounce','easeOutBounce','easeInOutBounce'];  var OPTS = {
+  var EASINGS = ['linear','swing','easeInQuad','easeInCubic','easeInQuart','easeInQuint','easeInExpo','easeInSine','easeInCirc','easeInElastic','easeOutElastic','easeInOutElastic','easeInBack','easeInBounce','easeOutBounce'];
+  var OPTS = {
     video: {
       speed: 1500,
       pause: config.video_duration_sec * 1000
@@ -138,7 +139,7 @@ $(function() {
 
     slider.reloadSlider({
       auto: true,
-      controls: false,
+    //  controls: false,
     //  autoControls: true,
       speed: opts.speed,
       pause: opts.pause,
@@ -161,6 +162,27 @@ $(function() {
      this.removeAttribute("controls");
   });
 });
+
+$(window).load(function() {
+    $('.banner').find('img').each(function() {
+      var imgClass = (this.width / this.height > 1) ? 'wide' : 'tall';
+      if (imgClass == "tall") {
+        $(this).css({height: $(".bx-viewport").innerHeight() + "px"});
+      }
+      if (imgClass == "wide") {
+        $(this).css({"margin-top": (this.height/2) + "px" });
+      }
+      $(this).addClass(imgClass);
+    });
+
+    $('img.member-banner').each(function() {
+      var imgClass = (this.width / this.height > 1) ? 'wide' : 'tall';
+      if (imgClass == "tall") {
+        $(this).css({height: ($(".bx-viewport").innerHeight() - 400) + "px"});
+      }
+      $(this).addClass(imgClass);
+    })
+})
 
 // create desktop menu
 if (config.menu) {
